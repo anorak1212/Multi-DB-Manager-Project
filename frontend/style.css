@@ -1,0 +1,205 @@
+/* ── Reset & Variables ─────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --primary:  #4f46e5;
+  --danger:   #ef4444;
+  --success:  #22c55e;
+  --bg:       #f1f5f9;
+  --surface:  #ffffff;
+  --text:     #1e293b;
+  --muted:    #64748b;
+  --border:   #e2e8f0;
+  --radius:   0.5rem;
+  --shadow:   0 2px 8px rgba(0,0,0,.08);
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* ── Header ────────────────────────────────────────────────────── */
+header {
+  background: var(--primary);
+  color: #fff;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--shadow);
+}
+
+header h1 { font-size: 1.4rem; }
+
+nav { display: flex; gap: .5rem; }
+
+nav button {
+  background: rgba(255,255,255,.15);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,.3);
+  border-radius: var(--radius);
+  padding: .4rem 1rem;
+  cursor: pointer;
+  font-size: .9rem;
+  transition: background .2s;
+}
+
+nav button:hover { background: rgba(255,255,255,.3); }
+
+/* ── Main ──────────────────────────────────────────────────────── */
+main {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.section h2 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  color: var(--primary);
+}
+
+/* ── Cards ─────────────────────────────────────────────────────── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  margin-bottom: 1.25rem;
+  box-shadow: var(--shadow);
+}
+
+.card h3 { margin-bottom: .75rem; font-size: 1rem; color: var(--muted); }
+
+/* ── Forms ─────────────────────────────────────────────────────── */
+form label {
+  display: flex;
+  flex-direction: column;
+  gap: .25rem;
+  margin-bottom: .75rem;
+  font-size: .875rem;
+  font-weight: 500;
+}
+
+form input {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: .5rem .75rem;
+  font-size: .95rem;
+  outline: none;
+  transition: border-color .2s;
+}
+
+form input:focus { border-color: var(--primary); }
+
+.form-actions { display: flex; gap: .5rem; margin-top: .25rem; }
+
+/* ── Buttons ───────────────────────────────────────────────────── */
+button {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  padding: .45rem 1.1rem;
+  cursor: pointer;
+  font-size: .875rem;
+  transition: opacity .2s;
+}
+
+button:hover { opacity: .85; }
+
+button.btn-danger {
+  background: var(--danger);
+}
+
+button.btn-edit {
+  background: #f59e0b;
+}
+
+button.btn-secondary {
+  background: var(--muted);
+}
+
+/* ── Lists ─────────────────────────────────────────────────────── */
+.list { display: flex; flex-direction: column; gap: .6rem; }
+
+.list-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: .85rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--shadow);
+}
+
+.list-item-info { flex: 1; }
+.list-item-info strong { display: block; margin-bottom: .2rem; }
+.list-item-info span { font-size: .8rem; color: var(--muted); }
+
+.list-item-actions { display: flex; gap: .4rem; }
+
+/* ── Result box ────────────────────────────────────────────────── */
+.result-box {
+  margin-top: 1rem;
+  padding: .85rem 1rem;
+  border-radius: var(--radius);
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  color: #166534;
+  font-weight: 500;
+}
+
+.result-box.error {
+  background: #fef2f2;
+  border-color: #fecaca;
+  color: #991b1b;
+}
+
+/* ── Toast ─────────────────────────────────────────────────────── */
+.toast {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  background: #1e293b;
+  color: #fff;
+  padding: .7rem 1.2rem;
+  border-radius: var(--radius);
+  font-size: .875rem;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity .3s, transform .3s;
+  pointer-events: none;
+  z-index: 999;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Report table ──────────────────────────────────────────────── */
+.report-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .9rem;
+}
+
+.report-table th,
+.report-table td {
+  text-align: left;
+  padding: .6rem .8rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.report-table th {
+  background: var(--bg);
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.report-table tr:hover td { background: #f8fafc; }
