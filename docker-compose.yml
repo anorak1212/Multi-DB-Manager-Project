@@ -36,7 +36,7 @@ services:
     networks:
       - app_net
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "mysql", "-pmysql"]
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-u", "mysql", "-pmysql"]
       interval: 5s
       timeout: 5s
       retries: 15
