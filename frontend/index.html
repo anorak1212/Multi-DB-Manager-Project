@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Multi-DB Manager</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header>
+  <h1>🛒 Multi-DB Manager</h1>
+  <nav>
+    <button onclick="showSection('clients')">Clients</button>
+    <button onclick="showSection('products')">Products</button>
+    <button onclick="showSection('purchase')">Purchase</button>
+    <button onclick="showSection('report')">Report</button>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ── CLIENTS ────────────────────────────────────────────────── -->
+  <section id="clients" class="section">
+    <h2>Clients (PostgreSQL)</h2>
+
+    <div class="card">
+      <h3 id="client-form-title">Add Client</h3>
+      <form id="client-form">
+        <input type="hidden" id="client-id" />
+        <label>Name <input type="text" id="client-name" required /></label>
+        <label>Email <input type="email" id="client-email" required /></label>
+        <label>Phone <input type="text" id="client-phone" /></label>
+        <div class="form-actions">
+          <button type="submit">Save</button>
+          <button type="button" id="client-cancel" style="display:none" onclick="resetClientForm()">Cancel</button>
+        </div>
+      </form>
+    </div>
+
+    <div id="clients-list" class="list"></div>
+  </section>
+
+  <!-- ── PRODUCTS ───────────────────────────────────────────────── -->
+  <section id="products" class="section" style="display:none">
+    <h2>Products (MySQL)</h2>
+
+    <div class="card">
+      <h3 id="product-form-title">Add Product</h3>
+      <form id="product-form">
+        <input type="hidden" id="product-id" />
+        <label>Name  <input type="text"   id="product-name"  required /></label>
+        <label>Price <input type="number" id="product-price" step="0.01" min="0" required /></label>
+        <label>Stock <input type="number" id="product-stock" min="0" value="0" required /></label>
+        <div class="form-actions">
+          <button type="submit">Save</button>
+          <button type="button" id="product-cancel" style="display:none" onclick="resetProductForm()">Cancel</button>
+        </div>
+      </form>
+    </div>
+
+    <div id="products-list" class="list"></div>
+  </section>
+
+  <!-- ── PURCHASE ───────────────────────────────────────────────── -->
+  <section id="purchase" class="section" style="display:none">
+    <h2>Purchase</h2>
+
+    <div class="card">
+      <form id="purchase-form">
+        <label>Client ID  <input type="number" id="purchase-client-id"  min="1" required /></label>
+        <label>Product ID <input type="number" id="purchase-product-id" min="1" required /></label>
+        <div class="form-actions">
+          <button type="submit">Buy</button>
+        </div>
+      </form>
+      <div id="purchase-result" class="result-box" style="display:none"></div>
+    </div>
+  </section>
+
+  <!-- ── REPORT ─────────────────────────────────────────────────── -->
+  <section id="report" class="section" style="display:none">
+    <h2>Registration Report</h2>
+    <button onclick="loadReport()">🔄 Refresh</button>
+    <div id="report-content" class="list"></div>
+  </section>
+
+</main>
+
+<div id="toast" class="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
